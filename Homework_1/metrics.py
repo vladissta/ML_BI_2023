@@ -60,7 +60,7 @@ def r_squared(y_pred, y_true):
     r2 - r-squared value
     """
 
-    r2 = np.corrcoef(y_true, y_pred)[0, 1] ** 2
+    r2 = 1 - (((y_true - y_pred)**2).sum()/((y_true - y_true.mean())**2).sum())
 
     return r2
 
