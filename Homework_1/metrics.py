@@ -21,8 +21,15 @@ def binary_classification_metrics(y_pred, y_true):
     fp_n = np.sum(np.logical_and(y_pred == 1, y_true == 0))
     fn_n = np.sum(np.logical_and(y_pred == 0, y_true == 1))
 
-    precision = tp_n / (tp_n + fp_n)
-    recall = tp_n / (tp_n + fn_n)
+    try:
+    	precision = tp_n / (tp_n + fp_n)
+    except ZeroDivisionError:
+    	precision = 0
+
+    try
+	recall = tp_n / (tp_n + fn_n)
+    except ZeroDivisionError:
+	recall = 0
 
     try:
         f1 = 2 * precision * recall / (precision + recall)
