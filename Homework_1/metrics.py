@@ -22,14 +22,14 @@ def binary_classification_metrics(y_pred, y_true):
     fn_n = np.sum(np.logical_and(y_pred == 0, y_true == 1))
 
     try:
-    	precision = tp_n / (tp_n + fp_n)
+        precision = tp_n / (tp_n + fp_n)
     except ZeroDivisionError:
-    	precision = 0
+        precision = 0
 
-    try
-	recall = tp_n / (tp_n + fn_n)
+    try:
+        recall = tp_n / (tp_n + fn_n)
     except ZeroDivisionError:
-	recall = 0
+        recall = 0
 
     try:
         f1 = 2 * precision * recall / (precision + recall)
@@ -67,7 +67,7 @@ def r_squared(y_pred, y_true):
     r2 - r-squared value
     """
 
-    r2 = 1 - (((y_true - y_pred)**2).sum()/((y_true - y_true.mean())**2).sum())
+    r2 = 1 - (((y_true - y_pred) ** 2).sum() / ((y_true - y_true.mean()) ** 2).sum())
 
     return r2
 
